@@ -1,0 +1,31 @@
+server:
+  port: 15001
+
+
+
+spring:
+  jta:
+    enabled: true
+  application:
+    name: report-system
+  jpa:
+    show-sql: true
+  oracle-datasource:
+    jdbcUrl: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    username: system
+    password: oracle123
+    driver-class-name: oracle.jdbc.OracleDriver
+  primary-datasource:
+    jdbcUrl: jdbc:postgresql://localhost:4002/reporting_system
+    username: postgres
+    password: qwer
+    driver-class-name: org.postgresql.Driver
+  secondary-datasource:
+    jdbcUrl: jdbc:postgresql://public.pg.polardb.ap-southeast-5.rds.aliyuncs.com:5432/employees
+    username: chhaya
+    password: "#Reksmey12"
+    driver-class-name: org.postgresql.Driver
+#  security:
+#    user:
+#      name: admin
+#      password: admin

@@ -1,0 +1,3 @@
+include(":email-service")
+include(":reporting-system")
+include(":core")

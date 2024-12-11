@@ -1,0 +1,17 @@
+server:
+  port: 15000
+
+spring:
+  application:
+    name: email-service
+  mail:
+    username: it.chhaya@gmail.com
+    password: ahgi egcw foij ropq
+    host: smtp.gmail.com
+    port: 587 # PORT TLS
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

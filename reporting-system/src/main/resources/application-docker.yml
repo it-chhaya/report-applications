@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://system-db-ya:5432/db_system
+    username: admin
+    password: qwerqwer
+    driver-class-name: org.postgresql.Driver
+  config:
+    activate:
+      on-profile: docker
