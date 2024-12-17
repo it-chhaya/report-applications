@@ -1,8 +1,6 @@
 package co.istad.reporting.core.auth;
 
-import co.istad.reporting.core.auth.dto.AuthResponse;
-import co.istad.reporting.core.auth.dto.LoginRequest;
-import co.istad.reporting.core.auth.dto.RefreshTokenRequest;
+import co.istad.reporting.core.auth.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
+
+    @PostMapping("/verify")
+    void verify(@RequestBody VerifyRequest verifyRequest) {
+        authService.verify(verifyRequest.email(), verifyRequest.token());
+    }
+
+
+    @PostMapping("/register")
+    RegisterResponse register(@RequestBody RegisterRequest registerRequest) {
+        return authService.register(registerRequest);
+    }
 
 
     @PostMapping("/refresh-token")

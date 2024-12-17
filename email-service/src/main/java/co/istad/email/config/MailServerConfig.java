@@ -44,17 +44,16 @@ public class MailServerConfig {
             mimeMessageHelper.setText(proceedTemplate, true);
             mimeMessageHelper.setTo(mailRequest.to());
             mimeMessageHelper.setFrom(adminMail);
-            mimeMessageHelper.setCc(mailRequest.cc());
+
+            if (mailRequest.cc() != null) {
+                mimeMessageHelper.setCc(mailRequest.cc());
+            }
+
             mimeMessageHelper.setSubject(mailRequest.subject());
 
-            Resource resource = new ClassPathResource("orders.csv");
-            mimeMessageHelper.addAttachment("report", resource.getFile());
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {
             System.out.println("Error send mail: " + e.getMessage());
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            System.out.println("Error attachment: " + e.getMessage());
             throw new RuntimeException(e);
         }
 

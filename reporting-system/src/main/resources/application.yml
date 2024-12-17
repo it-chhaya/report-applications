@@ -1,9 +1,17 @@
 server:
   port: 15001
 
-
-
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
   jta:
     enabled: true
   application:
@@ -29,3 +37,8 @@ spring:
 #    user:
 #      name: admin
 #      password: admin
+
+kafka:
+  topic:
+    user-registered-events-topic: "user-registered-events-topic"
+    user-verified-events-topic: "user-verified-events-topic"
